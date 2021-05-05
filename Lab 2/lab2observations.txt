@@ -1,0 +1,117 @@
+Lab 2 Observations
+
+Vincent Yu
+COEN 146L
+04/07/2020
+
+Step 2:
+
+netstat - 
+    After using the netstat command, I see all the active internet connections that the machine has.
+    It shows their active protocol, such as TCP, UDP, UNIX. It also shows their local and foreign addresses.
+    The netstat command is useful for checking what internet connections are in your network and
+    if the certain connections are working or not. It can also help you see if there are any suspicious connections.
+
+ifconfig-
+    After using the ifconfig command, I see all the network interfaces. Options can be used with the 
+    ifconfig command so that instead of just dispalying the network interfaces, you can configure them.
+    You can set the IP address of a network interface using the options.
+
+hostname-
+    After using the hostname command, I see that it just outputs the host of the system. Since I am using
+    VirtualBox, the hostname was vincent-VirtualBox. You can also use options to set the hostname.
+
+ping-
+    After using the ping command, options just showed up that you can use with ping. Using the ping command
+    alone doesn't result in anything. You need to use it on an IP address or website like ping google.com.
+    Then it will start sending out packets to the address that you typed. You can use options to set the 
+    number of pings, the size of packets sent, and the ping interval. At the end or if you choose to ctrl-c,
+    it will show you statistics such as packets sent/received and the time it took, and also packet loss.
+
+traceroute-
+    After using the traceroute command, options showed up that you can use with traceroute. You need to use
+    traceroute with an address, similar to ping command. I used traceroute google.com and what traceroute 
+    does it give you information about the route a packet takes to get to its destination. It also shows 
+    which servers it goes through and the time it took to get there.
+
+telnet-
+    After using the telnet command, it didn't display anthing useful. You need to use the telnet command
+    with a 80 -http port. I connected to gaia.cs.umass.edu 80 and there was a successful connection. The 
+    telnet command is used to establish a remote connection to server.
+
+host/dig-
+    After using the host and dig command, it just displays options so you need to use it with an address.
+    I used host and dig with google.com. Both host and dig are used to lookup the DNS of the address. You
+    can use host and dig to troubleshoot with the DNS.
+
+route-
+    After using the route command, it shows a routing table. With additional options you can use the route
+    command to change the routing tables and set up routes to specific servers.
+
+arp-
+    After using the arp command, you need to use options with it so I used arp -a. It displays the 
+    current ARP cache. You can also modify the cache. It shows the connections' IP addresses.
+
+
+Step 3: 
+
+USA: google.com
+Europe: europa.eu
+China: baidu.com
+
+For each ping, I am sending 5 packets.
+
+USA: yahoo.com-
+32-bytes: 0% packet loss, 38.702ms avg RTT 
+64-bytes: 0% packet loss, 38.676ms avg RTT
+256-bytes: 0% packet loss, 38.724ms avg RTT
+1048-bytes: 0% packet loss, 38.771ms avg RTT
+
+Europe: visiteurope.com
+32-bytes: 0% packet loss, 152.628ms avg RTT
+64-bytes: 0% packet loss, 153.645ms avg RTT
+256-bytes: 0% packet loss, 153.357ms avg RTT
+1048-bytes: 0% packet loss, 156.581ms avg RTT
+
+China: baidu.com-
+32-bytes: 0% packet loss, 210.130ms avg RTT
+64-bytes: 0% packet loss, 215.193ms avg RTT
+256-bytes: 0% packet loss, 214.337ms avg RTT
+1048-bytes: 0% packet loss, 221.543ms avg RTT
+
+
+Since I am currently in the US, the time it takes to send packets to a US address is very short
+(aobut 38ms RTT) and the packet size has very little effect on the time. Pinging a European address
+takes about 152-156ms because it needs to send the packets overseas to Europe. Here the packet size has 
+a much more noticable effect on the RTT. Sending packets to Asia to baidu.com took the longest because 
+it is the furthest from the US. You can clearly see that sending larger packets has a much larger impact
+on the RTT.
+
+
+
+Step 5:
+After connecting with telnet gaia.cs.umass.edu 80,
+I pasted in:
+    GET /kurose_ross/interactive/index.php HTTP/1.1
+    Host: gaia.cs.umass.edu
+Then I pressed the Enter button 2 times. 
+
+Then the website (displayed in HTML format) appeared: https://gaia.cs.umass.edu/kurose_ross/interactive/index.php
+
+After that the connection was closed.
+
+1. The name of the file being retrieved in the GET is /kurose_ross/interactive/index.php
+2. The client is running HTTP version 1.1
+3. The format of text and images are in HTML format
+
+
+Step 6: 
+
+I used telnet for all three of the addresses: yahoo.com, baidu.com, and visiteurope.com.
+For all three, I was able to connect using port 80.
+When I tried using port 3389 or any other port, it would result in trying to connect to the address, and
+it would try different addresses but in the end, even after waiting several minutes, there was no connection.
+
+I experimented with the GET command and tried to connect to a site like yahoo.com/entertainment. I would get
+a result but not the website. I would always end up at a HTML display that would be for yahoo.com's
+"Bad HTML request" redirects.
