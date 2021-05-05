@@ -1,0 +1,8 @@
+Lab 1 Observations
+Name: Vincent Yu
+
+When using ./ExecutableName there was a segmentation fault because the sample C program required a command
+line input. So we need a number after like ./ExecutableName 3000 which worked. I also tried using
+./ExecutableName 500 and ./ExecutableName 5000 and the difference is that 500 has a very short delay 
+before executing the program, while 5000 has a longer delay (longer than 3000). This is because the sample
+C program uses usleep() function which takes the command line argument and sleeps for that amount.
